@@ -3,6 +3,7 @@ env/
 var/
 gif_layers/
 gif_deconstructed_layers/
+build/
 
 
 # Python Packages

@@ -35,14 +35,19 @@ gif_layers
 | ----- body_2.gif
 | ----- body_3.gif
 | ----- body_4.gif
+| -- hair
+| ----- hair_1.gif
+| ----- hair_2
+| -------- hair_2_front.gif
+| -------- hair_2_back.gif
+| ----- hair_3.gif
 | -- face
 | ----- face_1.gif
 | ----- face_2.gif
 
 ```
 - Subdirectory names must match layer names in [LAYERS_ORDER](https://github.com/0xDounia/nft_gif_generatooor/blob/main/src/config.py#L10) in order to be processed
-
-
+- Nested folders within those subdirectories will be parsed for their GIF files as well (Ex: hair_2). This is done so that GIF layers that need to be built in a different order than LAYERS_ORDER are supported as well. See [Options](#Options) for more
 
 
 # How To Run 🏃‍♀️
@@ -50,4 +55,6 @@ gif_layers
 ```
 python3 src/convert_gif_to_png.py
 ```
+
+# Options 🎛
 
