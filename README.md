@@ -1,7 +1,7 @@
 # NFT_GIF_GENERATOOOR
 Generate a collection of NFTs as GIFs👾
 
-## Local Setup 💻
+# Local Setup 💻
 #### To develop and test locally, a virtual environment will need to be created
 ```
 $ pip3 install virtualenv
@@ -22,7 +22,7 @@ $ pip list
 $ deactivate
 ```
 
-## File Structure 🌳
+# File Structure 🌳
 ### gif_layers
 ```js
 gif_layers
@@ -40,12 +40,13 @@ gif_layers
 | ----- face_2.gif
 
 ```
- - Subdiretory names must match layer names in **LAYERS_ORDER** in order to be processed
+- Subdirectory names must match layer names in [LAYERS_ORDER](https://github.com/0xDounia/nft_gif_generatooor/blob/main/src/config.py#L10) in order to be processed
 
 
 
-## How To Run 🏃‍♀️
-1. From the **nft_gif_generatooor** directory, run the below command for a 1 time conversion of all GIF files into their separate PNG files required to produce the final GIFs. These files will be stored in the _GIF_DECONSTRUCTED_LAYERS_PATH_ defined in [config.py] (https://github.com/0xDounia/nft_gif_generatooor/blob/main/src/config.py), which will be built upon the first run.
+
+# How To Run 🏃‍♀️
+1. From the **nft_gif_generatooor** directory, run the below command for a 1 time conversion of all GIF files into their separate PNG files required to produce the final GIFs. These files will be stored in the [GIF_DECONSTRUCTED_LAYERS_PATH]([config.py](https://github.com/0xDounia/nft_gif_generatooor/blob/main/src/config.py)), which will be built upon the first run.
 ```
 python3 src/convert_gif_to_png.py
 ```
