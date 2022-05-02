@@ -1,13 +1,19 @@
 from generate_gif import *
+from randomly_generate_traits import *
 
-filepaths = find_filepaths({
-    'background': 'black_forest', 
-    'body': 'black_cape', 
-    'ears': 'green_slime', 
-    'head': 'HEAD_10', 
-    'eyes': 'EYES_16', 
-    'hair': 'weirdo', 
-    'mouth': 'MOUTH_7'
-})
+# Starts creating the random GIFs
+def start_creating():
+    for i in range(GENERATION_COUNT):
+        traits = generate_trait_paths()
 
-generate_single_image(filepaths)
+        # Generate & save the image
+        print('Generating GIF {} with traits: {} '.format(i, traits[0]))
+        generate_single_gif(i, traits[1])
+
+        # Generate & save the metadata
+
+
+
+
+
+start_creating()
