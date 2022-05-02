@@ -15,11 +15,10 @@ def generate_single_image(filepaths):
     images = []
     base_path = filepaths[0]
 
-    for i in range (0,120):
+    for i in range (0,24):
         #Set background as the base for each incoming layer 
         base_image = Image.open(os.path.join(base_path, str(i)+'.png')).convert("RGBA")
         base = base_image.copy()
-
         for file_path in filepaths[1:]:
             img = Image.open(os.path.join(file_path, str(i)+'.png')).convert("RGBA")
             base.paste(img, (0,0), img)
@@ -28,10 +27,16 @@ def generate_single_image(filepaths):
     save_gif(images)
     
 
+# Saves GIF to build directory 
 def save_gif(images):
+    file_name = 'TESTING.gif'
     if not os.path.exists(BUILD_PATH):
         os.makedirs(BUILD_PATH)
+    images[0].save(os.path.join(BUILD_PATH, file_name), format='GIF', save_all=True, append_images=images[1:], optimize=True, loop=0)
 
-    images[0].save(str(BUILD_PATH) + '/TESTING.gif', format='GIF', save_all=True, append_images=images[1:], optimize=False, duration=40, loop=0)
+    file_size = os.path.getsize(os.path.join(BUILD_PATH, file_name))
+    print('IMAGE' + file_name + 'SIZE IS ', file_size)
+
 
 #TO DO: make sure base path comes in first at either fine_filepaths or gen_single_image level. is background always guaranteed?
+#TO DO: file size check
