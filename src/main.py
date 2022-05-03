@@ -17,6 +17,7 @@ def start_creating():
         generate_single_gif(i, traits[1])
 
         # Generate & save the metadata
+        generate_metadata(i, traits[0])
 
 
 # Deletes & re-creates build directory at the beginning of every generation

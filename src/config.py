@@ -9,7 +9,7 @@ SAVE_IMAGE_PATH = os.path.join(BUILD_PATH, 'images')
 SAVE_METADATA_PATH = os.path.join(BUILD_PATH, 'json')
 
 # How many GIFs will be randomly generated
-GENERATION_COUNT = 10
+GENERATION_COUNT = 1
 
 LAYERS_ORDER = [
     'background',
@@ -20,3 +20,7 @@ LAYERS_ORDER = [
     'hair',
     'mouth'
 ]
+
+# Metadata Constants
+METADATA_NAME = 'Your NFT Collection'                           # Name of NFT collection
+METADATA_DESCRIPTION = "A collection of 10,000 GIF NFTs"        # Description of collection
