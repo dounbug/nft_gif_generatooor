@@ -27,27 +27,26 @@ def generate_single_gif(iter, trait_paths):
 def save_gif(iter, images):
     gif_path = os.path.join(SAVE_IMAGE_PATH, str(iter)+'.gif')
     images[0].save(gif_path, format='GIF', save_all=True, append_images=images[1:], optimize=True, loop=0)
-    file_size = os.path.getsize(gif_path)
     
     if(SAVE_AS_MP4):
-        convert_gif_to_mp4(iter, gif_path)
-    
+        convert_gif_to_mp4(iter, gif_path, images[0])
+
+    #file_size = os.path.getsize(gif_path)
     #print('GIF {} has been saved with a file size of {} MB'.format(iter, file_size))
 
-# Reads in GIF, converts to MP4, & deletes GIF file
-def convert_gif_to_mp4(iter, gif_path):
+# Reads in GIF, saves an MP4 & thumbnail PNG, & deletes GIF file
+def convert_gif_to_mp4(iter, gif_path, thumbnail):
     mp4_path = os.path.join(SAVE_IMAGE_PATH, str(iter)+'.mp4')
     clip = mp.VideoFileClip(gif_path)
     clip.write_videofile(mp4_path)
+
+    thumbnail_path = os.path.join(SAVE_THUMBNAIL_PATH, str(iter)+'.png')
+    thumbnail.save(thumbnail_path, 'PNG')
 
     mp4_file_size = os.path.getsize(mp4_path)
     print('MP4 {} has been saved with a file size of {} MB'.format(iter, mp4_file_size))
 
     os.remove(gif_path)
-
-
-def get_file_size():
-    return
 
 # Generates metadata from defined class & passes JSON object to save function
 def generate_metadata(iter, trait_obj):
@@ -55,11 +54,12 @@ def generate_metadata(iter, trait_obj):
     description = METADATA_DESCRIPTION
     edition = str(iter)
     date = time.mktime(datetime.now().timetuple())
+    thumbnail = ''
     attributes = []
     for key in trait_obj:
         attributes.append({'trait_type': key, 'trait_value': trait_obj[key]})
 
-    data = Metadata(name,description,edition,date,attributes)
+    data = Metadata(name,description,edition,date,thumbnail,attributes)
     save_metadata(iter, data)
     
 

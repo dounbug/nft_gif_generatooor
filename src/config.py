@@ -7,6 +7,7 @@ GIF_DECONSTRUCTED_LAYERS_PATH = os.path.join(BASE_PATH,'gif_deconstructed_layers
 BUILD_PATH = os.path.join(BASE_PATH, 'build')
 SAVE_IMAGE_PATH = os.path.join(BUILD_PATH, 'images')
 SAVE_METADATA_PATH = os.path.join(BUILD_PATH, 'json')
+SAVE_THUMBNAIL_PATH = os.path.join(BUILD_PATH, 'thumbnail')
 
 # How many GIFs will be randomly generated
 GENERATION_COUNT = 1

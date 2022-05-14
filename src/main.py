@@ -26,6 +26,7 @@ def create_directories():
     os.mkdir(BUILD_PATH)
     os.mkdir(SAVE_IMAGE_PATH)
     os.mkdir(SAVE_METADATA_PATH)
+    os.mkdir(SAVE_THUMBNAIL_PATH)
 
 
 
