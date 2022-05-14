@@ -24,3 +24,6 @@ LAYERS_ORDER = [
 # Metadata Constants
 METADATA_NAME = 'Your NFT Collection'                           # Name of NFT collection
 METADATA_DESCRIPTION = "A collection of 10,000 GIF NFTs"        # Description of collection
+
+# Toggle between saving as a .GIF or .MP4
+SAVE_AS_MP4 = True

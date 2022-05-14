@@ -4,13 +4,14 @@ from classes.Metadata import Metadata
 from datetime import datetime
 import time
 import json
+import moviepy.editor as mp
 
 # Takes in an ordered list of paths from which to generate the final GIF
 def generate_single_gif(iter, trait_paths):
     images = []
     base_path = trait_paths[0]
 
-    for i in range (0,25):
+    for i in range (0,119):
         #Set background as the base for each incoming layer 
         base_image = Image.open(os.path.join(base_path, str(i)+'.png')).convert("RGBA")
         base = base_image.copy()
@@ -24,12 +25,29 @@ def generate_single_gif(iter, trait_paths):
 
 # Saves GIF to build/images directory 
 def save_gif(iter, images):
-    file_name = str(iter)+'.gif'
+    gif_path = os.path.join(SAVE_IMAGE_PATH, str(iter)+'.gif')
+    images[0].save(gif_path, format='GIF', save_all=True, append_images=images[1:], optimize=True, loop=0)
+    file_size = os.path.getsize(gif_path)
+    
+    if(SAVE_AS_MP4):
+        convert_gif_to_mp4(iter, gif_path)
+    
+    #print('GIF {} has been saved with a file size of {} MB'.format(iter, file_size))
 
-    images[0].save(os.path.join(SAVE_IMAGE_PATH, file_name), format='GIF', save_all=True, append_images=images[1:], optimize=True, loop=0)
+# Reads in GIF, converts to MP4, & deletes GIF file
+def convert_gif_to_mp4(iter, gif_path):
+    mp4_path = os.path.join(SAVE_IMAGE_PATH, str(iter)+'.mp4')
+    clip = mp.VideoFileClip(gif_path)
+    clip.write_videofile(mp4_path)
 
-    file_size = os.path.getsize(os.path.join(SAVE_IMAGE_PATH, file_name))
-    print('GIF {} has been saved with a file size of {} MB'.format(iter, file_size))
+    mp4_file_size = os.path.getsize(mp4_path)
+    print('MP4 {} has been saved with a file size of {} MB'.format(iter, mp4_file_size))
+
+    os.remove(gif_path)
+
+
+def get_file_size():
+    return
 
 # Generates metadata from defined class & passes JSON object to save function
 def generate_metadata(iter, trait_obj):
@@ -48,10 +66,8 @@ def generate_metadata(iter, trait_obj):
 # Saves JSON metadata for the GIF to build/json directory
 def save_metadata(iter, data):
     json_data = json.dumps(data.__dict__, indent=4)
-    print('save metadata ', json_data)
     file_name = str(iter)+'.json'
     save_path = os.path.join(SAVE_METADATA_PATH, file_name)
-    print('SAVE JSON FILE ', save_path)
 
     with open(save_path, "w") as outfile:
         outfile.write(json_data)

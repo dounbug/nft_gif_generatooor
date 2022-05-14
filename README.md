@@ -57,4 +57,4 @@ python3 src/convert_gif_to_png.py
 ```
 
 # Options 🎛
-
+- *SAVE_AS_MP4* - Toggle between saving the output file as a .gif or .mp4 using this boolean
