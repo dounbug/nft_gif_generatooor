@@ -27,8 +27,22 @@ def generate_traits():
 def select_trait(trait_path):
     # Only looking at subdirectories, as they should be parsed PNGs of the GIFs
     trait_options = [ f.path for f in os.scandir(trait_path) if f.is_dir() ]
-    random_trait = random.choice(trait_options)
+    rarity_weights = []
+    for option in trait_options:
+        option_arr = option.split('/')
+        get_trait_weight(option_arr[len(option_arr)-1], rarity_weights)
+  
+    random_trait = random.choices(trait_options, weights=rarity_weights)[0]
     return random_trait
+
+# Returns list of weighted traits, replacing traits that are missing a weight value with 1
+def get_trait_weight(trait_file, rarity_weights):
+    if ('#' in trait_file):
+        trait_weight = int(trait_file.split('#')[1])
+    else:
+        trait_weight = 1
+    rarity_weights.append(trait_weight)
+    return rarity_weights
 
 
 # Turns object into a string that gets added to generated_trait_list for ensuring trait selection is unique 
