@@ -1,5 +1,5 @@
 # NFT_GIF_GENERATOOOR
-Generate a collection of NFTs as GIFs👾
+Generate a collection of NFTs as GIFs👾 (In Progres..)
 
 # Local Setup 💻
 #### To develop and test locally, a virtual environment will need to be created
