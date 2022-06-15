@@ -54,17 +54,22 @@ gif_layers
 ```
 python3 src/convert_gif_to_png.py
 ```
+2. From the same directory, once the frames of all GIFs have been parsed into PNG's & saved into their subdirectories, run the below command to build.
+```
+python3 src/main.py
+```
 
 # Config Constants & Options 🎛
 - *NUMBER_OF_FRAMES* - This is a REQUIRED constant. Each GIF should be using the same # of frames to generate in order to properly overlap the GIFs into the final NFT. An error will be thrown from the convert_gif_to_png.py script 
 - *GENERATION_COUNT* - The total number of NFTs that will be randomly generated
 - *SAVE_AS_MP4* - Toggle between saving the output file as a .gif or .mp4 using this boolean
 - *METADATA_NAME* - Name of the collection that will be placed in the 'name' key in the metadata JSON object 
+- *PARSE_UNDERSCORE* - Boolean to turn ON if underscores should be replaced with spaces in attribute value names when being saved in the metadata.
 
-# Metadata Format
-"name": METADATA_NAME,
-"description": METADATA_DESCRIPTION,
-"edition": Numeric value of NFT edition (0, 1, 2, 3, etc.),
-"date": Date in UNIX,
-"thumbnail": "",
-"attributes": [ , , , ]
+# Metadata Format 📀
+* name: METADATA_NAME,
+* description: METADATA_DESCRIPTION,
+* edition: Numeric value of NFT edition (0, 1, 2, 3, etc.),
+* date: Date in UNIX,
+* thumbnail": "",
+* attributes : List of {attribute type: attribute value} objects.
