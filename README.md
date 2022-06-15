@@ -47,8 +47,7 @@ gif_layers
 
 ```
 - Subdirectory names must match layer names in [LAYERS_ORDER](https://github.com/0xDounia/nft_gif_generatooor/blob/main/src/config.py#L10) in order to be processed
-- Nested folders within those subdirectories will be parsed for their GIF files as well (Ex: hair_2). This is done so that GIF layers that need to be built in a different order than LAYERS_ORDER are supported as well. See [Options](#Options) for more
-
+- Nested folders within those subdirectories will be parsed for their GIF files as well (Ex: hair_2). This is done so that GIF layers that need to be built in a different order than LAYERS_ORDER are supported as well. See [Config Constants & Options](#Options) for more
 
 # How To Run 🏃‍♀️
 1. From the **nft_gif_generatooor** directory, run the below command for a 1 time conversion of all GIF files into their separate PNG files required to produce the final GIFs. These files will be stored in the [GIF_DECONSTRUCTED_LAYERS_PATH]([config.py](https://github.com/0xDounia/nft_gif_generatooor/blob/main/src/config.py)), which will be built upon the first run.
@@ -56,5 +55,16 @@ gif_layers
 python3 src/convert_gif_to_png.py
 ```
 
-# Options 🎛
+# Config Constants & Options 🎛
+- *NUMBER_OF_FRAMES* - This is a REQUIRED constant. Each GIF should be using the same # of frames to generate in order to properly overlap the GIFs into the final NFT. An error will be thrown from the convert_gif_to_png.py script 
+- *GENERATION_COUNT* - The total number of NFTs that will be randomly generated
 - *SAVE_AS_MP4* - Toggle between saving the output file as a .gif or .mp4 using this boolean
+- *METADATA_NAME* - Name of the collection that will be placed in the 'name' key in the metadata JSON object 
+
+# Metadata Format
+"name": METADATA_NAME,
+"description": METADATA_DESCRIPTION,
+"edition": Numeric value of NFT edition (0, 1, 2, 3, etc.),
+"date": Date in UNIX,
+"thumbnail": "",
+"attributes": [ , , , ]

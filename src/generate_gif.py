@@ -11,7 +11,7 @@ def generate_single_gif(iter, trait_paths):
     images = []
     base_path = trait_paths[0]
 
-    for i in range (0,119):
+    for i in range (0,119): 
         #Set background as the base for each incoming layer 
         base_image = Image.open(os.path.join(base_path, str(i)+'.png')).convert("RGBA")
         base = base_image.copy()
@@ -38,7 +38,7 @@ def save_gif(iter, images):
 def convert_gif_to_mp4(iter, gif_path, thumbnail):
     mp4_path = os.path.join(SAVE_IMAGE_PATH, str(iter)+'.mp4')
     clip = mp.VideoFileClip(gif_path)
-    clip.write_videofile(mp4_path)
+    clip.write_videofile(mp4_path, verbose=False, logger=None)
 
     thumbnail_path = os.path.join(SAVE_THUMBNAIL_PATH, str(iter)+'.png')
     thumbnail.save(thumbnail_path, 'PNG')
