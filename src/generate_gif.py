@@ -21,6 +21,27 @@ def generate_single_gif(iter, trait_paths):
         images.append(base)
 
     save_gif(iter, images)
+
+# Takes in an ordered list of paths from which to generate the final GIF
+def generate_single_image(iter, trait_paths):
+    images = []
+    base_path = trait_paths[0]
+
+    for i in range (0,1): 
+        #Set background as the base for each incoming layer 
+        base_image = Image.open(os.path.join(base_path, str(i)+'.png')).convert("RGBA")
+        base = base_image.copy()
+        for file_path in trait_paths[1:]:
+            img = Image.open(os.path.join(file_path, str(i)+'.png')).convert("RGBA")
+            base.paste(img, (0,0), img)
+        images.append(base)
+
+    save_image(iter, images)
+
+# Saves GIF to build/images directory 
+def save_image(iter, images):
+    gif_path = os.path.join(SAVE_IMAGE_PATH, str(iter)+'.png')
+    images[0].save(gif_path, format='PNG')
     
 
 # Saves GIF to build/images directory 

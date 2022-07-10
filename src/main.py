@@ -15,6 +15,7 @@ def start_creating():
         # Generate & save the image
         print('\nGenerating GIF {} with traits: {} '.format(i, traits[0]))
         generate_single_gif(i, traits[1])
+        generate_single_image(i, traits[1])
         # Generate & save the metadata
         generate_metadata(i, traits[0])
 
