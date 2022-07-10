@@ -13,7 +13,10 @@ SAVE_THUMBNAIL_PATH = os.path.join(BUILD_PATH, 'thumbnail')
 NUMBER_OF_FRAMES = 120
 
 # How many GIFs will be randomly generated
-GENERATION_COUNT = 10
+GENERATION_COUNT = 2
+
+# Duration of final output (in seconds)
+GIF_DURATION = 5
 
 LAYERS_ORDER = [
     'background',

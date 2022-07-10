@@ -11,7 +11,7 @@ def generate_single_gif(iter, trait_paths):
     images = []
     base_path = trait_paths[0]
 
-    for i in range (0,119): 
+    for i in range (0,NUMBER_OF_FRAMES-1): 
         #Set background as the base for each incoming layer 
         base_image = Image.open(os.path.join(base_path, str(i)+'.png')).convert("RGBA")
         base = base_image.copy()
@@ -26,7 +26,7 @@ def generate_single_gif(iter, trait_paths):
 # Saves GIF to build/images directory 
 def save_gif(iter, images):
     gif_path = os.path.join(SAVE_IMAGE_PATH, str(iter)+'.gif')
-    images[0].save(gif_path, format='GIF', save_all=True, append_images=images[1:], optimize=True, loop=0)
+    images[0].save(gif_path, format='GIF', save_all=True, append_images=images[1:], optimize=True, loop=0, duration=GIF_DURATION*10)
     
     if(SAVE_AS_MP4):
         convert_gif_to_mp4(iter, gif_path, images[0])
@@ -46,7 +46,7 @@ def convert_gif_to_mp4(iter, gif_path, thumbnail):
     mp4_file_size = os.path.getsize(mp4_path)
     print('MP4 {} has been saved with a file size of {} MB'.format(iter, mp4_file_size))
 
-    os.remove(gif_path)
+    #os.remove(gif_path)
 
 # Generates metadata from defined class & passes JSON object to save function
 def generate_metadata(iter, trait_obj):

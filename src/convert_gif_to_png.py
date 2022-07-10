@@ -1,4 +1,3 @@
-from lib2to3.pgen2.token import NUMBER
 import shutil
 from PIL import Image
 from tqdm import tqdm
@@ -52,7 +51,7 @@ def deconstruct_gif(subdir, folder_path, file):
             # In the case that new files need to be added without rewriting over all existing deconstructed layers, only save if path not present
             if not os.path.isfile(save_path):
                 gif_obj.seek(frame)
-                gif_obj.save(save_path, 'PNG')
+                gif_obj.save(save_path, 'PNG', quality=100)
             frame+=1
 
     except EOFError as e:
