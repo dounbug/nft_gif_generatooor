@@ -46,7 +46,7 @@ def convert_gif_to_mp4(iter, gif_path, thumbnail):
     mp4_file_size = os.path.getsize(mp4_path)
     print('MP4 {} has been saved with a file size of {} MB'.format(iter, mp4_file_size))
 
-    #os.remove(gif_path)
+    os.remove(gif_path)
 
 # Generates metadata from defined class & passes JSON object to save function
 def generate_metadata(iter, trait_obj):

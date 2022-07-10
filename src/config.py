@@ -16,7 +16,7 @@ NUMBER_OF_FRAMES = 120
 GENERATION_COUNT = 2
 
 # Duration of final output (in seconds)
-GIF_DURATION = 5
+GIF_DURATION = 4
 
 LAYERS_ORDER = [
     'background',
