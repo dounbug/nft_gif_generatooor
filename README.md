@@ -67,7 +67,7 @@ python3 src/main.py
 - *SAVE_AS_MP4* - Toggle between saving the output file as a .gif or .mp4 using this boolean
 - *METADATA_NAME* - Name of the collection that will be placed in the 'name' key in the metadata JSON object 
 - *PARSE_UNDERSCORE* - Boolean to turn ON if underscores should be replaced with spaces in attribute value names when being saved in the 
-- *GIF_DURATION* - Duration in seconds of the final output.
+- *FRAME_RATE* - FPS of the final output.
 
 # Metadata Format 📀
 * name: METADATA_NAME,

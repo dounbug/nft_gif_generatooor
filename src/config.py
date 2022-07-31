@@ -9,16 +9,16 @@ SAVE_IMAGE_PATH = os.path.join(BUILD_PATH, 'images')
 SAVE_METADATA_PATH = os.path.join(BUILD_PATH, 'json')
 SAVE_THUMBNAIL_PATH = os.path.join(BUILD_PATH, 'thumbnail')
 
-#Convert Gif to Py Script Constants
+# Number of frames of the individual input GIFs
 NUMBER_OF_FRAMES = 120
-FRAME_RATE = 24
 
 # How many GIFs will be randomly generated
 GENERATION_COUNT = 3
 
-# Duration of final output (in seconds)
-GIF_DURATION = 4
+# FPS of the final output
+FRAME_RATE = 24
 
+# Order in which to generate individual PNGs 
 LAYERS_ORDER = [
     'background',
     'body',
@@ -36,4 +36,5 @@ METADATA_DESCRIPTION = "A collection of 10,000 GIF NFTs"        # Description of
 
 
 # Toggle between saving as a .GIF or .MP4
+# TO DO: Change
 SAVE_AS_MP4 = True
