@@ -8,7 +8,6 @@ import moviepy.editor as mp
 
 # Takes in an ordered list of paths from which to generate the final GIF
 def generate_single_gif(iter, trait_paths):
-    images = []
     base_path = trait_paths[0]
 
     for i in range (0,NUMBER_OF_FRAMES-1): 
@@ -20,26 +19,23 @@ def generate_single_gif(iter, trait_paths):
             base.paste(img, (0,0), img)
 
         # Save the individual PNG
-        gif_path = os.path.join(SAVE_IMAGE_PATH, str(i)+'.png')
-        base.save(gif_path, format='PNG')
+        image_path = os.path.join(SAVE_IMAGE_PATH, str(i)+'.png')
+        base.save(image_path, format='PNG')
 
-        # Append to the GIF saving layers 
-        images.append(base)
-
-    # save_image(iter, images)
-    save_mov(iter, images)
+    save_mov(iter)
 
 
 # Saves GIF to build/images directory 
-def save_mov(iter, images):
+def save_mov(iter):
     gif_path = os.path.join(SAVE_IMAGE_PATH, str(iter)+'.mp4')
 
+    # Change directory to run the generation code, save movie, delete PNGs, & revert directory back 
     os.chdir(SAVE_IMAGE_PATH)
-    os.system("ffmpeg -framerate {} -i %d.png -c:v libx264 -r {} {}.mp4".format(FRAME_RATE, FRAME_RATE, iter))
+    os.system("ffmpeg -framerate {} -i %d.png -c:v libx264 {}.mp4".format(FRAME_RATE, iter))
     os.system(' find . -name "*.png" -type f -delete ')
-
     os.chdir(BASE_PATH)
 
+    # Get file size 
     file_size = os.path.getsize(gif_path)
     print('GIF {} has been saved with a file size of {} MB'.format(iter, file_size))
 

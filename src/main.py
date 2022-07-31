@@ -12,9 +12,11 @@ def main():
 def start_creating(): 
     for i in range(GENERATION_COUNT):
         traits = generate_traits()
+
         # Generate & save the image
         print('\nGenerating GIF {} with traits: {} '.format(i, traits[0]))
         generate_single_gif(i, traits[1])
+
         # Generate & save the metadata
         generate_metadata(i, traits[0])
 
@@ -27,9 +29,6 @@ def create_directories():
     os.mkdir(SAVE_IMAGE_PATH)
     os.mkdir(SAVE_METADATA_PATH)
     os.mkdir(SAVE_THUMBNAIL_PATH)
-
-
-
 
 
 main()
