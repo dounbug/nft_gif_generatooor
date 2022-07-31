@@ -11,6 +11,7 @@ SAVE_THUMBNAIL_PATH = os.path.join(BUILD_PATH, 'thumbnail')
 
 #Convert Gif to Py Script Constants
 NUMBER_OF_FRAMES = 120
+FRAME_RATE = 20
 
 # How many GIFs will be randomly generated
 GENERATION_COUNT = 1

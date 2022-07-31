@@ -27,34 +27,22 @@ def generate_single_gif(iter, trait_paths):
         images.append(base)
 
     # save_image(iter, images)
-    save_gif(iter, images)
+    save_mov(iter, images)
 
 
 # Saves GIF to build/images directory 
-def save_gif(iter, images):
+def save_mov(iter, images):
     gif_path = os.path.join(SAVE_IMAGE_PATH, str(iter)+'.mp4')
 
     os.chdir(SAVE_IMAGE_PATH)
-    os.system("ffmpeg -framerate 20 -i %d.png -c:v libx264 -r 30 {}.mp4".format(iter))
+    os.system("ffmpeg -framerate {} -i %d.png -c:v libx264 -r {} {}.mp4".format(FRAME_RATE, FRAME_RATE, iter))
+    os.system(' find . -name "*.png" -type f -delete ')
+
     os.chdir(BASE_PATH)
 
     file_size = os.path.getsize(gif_path)
     print('GIF {} has been saved with a file size of {} MB'.format(iter, file_size))
 
-    # TODO: Delete PNGs
-
-
-# Reads in GIF, saves an MP4 & thumbnail PNG, & deletes GIF file
-def convert_gif_to_mp4(iter, gif_path, thumbnail):
-    mp4_path = os.path.join(SAVE_IMAGE_PATH, str(iter)+'.mp4')
-    clip = mp.VideoFileClip(gif_path)
-    clip.write_videofile(mp4_path, verbose=False, logger=None)
-
-    thumbnail_path = os.path.join(SAVE_THUMBNAIL_PATH, str(iter)+'.png')
-    thumbnail.save(thumbnail_path, 'PNG')
-
-    mp4_file_size = os.path.getsize(mp4_path)
-    print('MP4 {} has been saved with a file size of {} MB'.format(iter, mp4_file_size))
 
 # Generates metadata from defined class & passes JSON object to save function
 def generate_metadata(iter, trait_obj):
