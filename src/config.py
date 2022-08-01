@@ -22,15 +22,27 @@ LAYERS_ORDER = [
 ]
 
 INCOMPATIBLE_TRAITS = {
-    'background': [],
-    'body' : []
+    # BODY 
+    'Hells_Cook': ['Aurora', '5th_Dimension', 'Blood_Lust'],
+    # EARS
+    'Blue_Flame_Ears': ['Rainbow_Rock_Tee', 'Extraterrestrial', 'Suspicious'],
+    # HEAD
+    'Extraterrestrial': ['Aftermath', 'Casual_Muck', 'Handmade_Bomber', 'OctoTutu', 'Purple_Fire_Coat'],
+    # HAIR
+    'Amoeba_Hair': ['Aurora', '5th_Dimension', 'Blood_Lust', 'Barbie_Inferno', 'Abandoned_Power_Plant', 'Aftermath'],
+    'Atomic_Hair': ['Aurora', '5th_Dimension', 'Blood_Lust', 'Barbie_Inferno', 'Abandoned_Power_Plant', 'Aftermath'],
+    'BoneyTail': ['Aurora', '5th_Dimension', 'Blood_Lust', 'Barbie_Inferno', 'Abandoned_Power_Plant', 'Aftermath'],
+    'Dead_Foliage': ['Aurora', '5th_Dimension', 'Blood_Lust', 'Barbie_Inferno', 'Abandoned_Power_Plant', 'Aftermath'],
+    'Electric_Wig': ['Aurora', '5th_Dimension', 'Blood_Lust', 'Barbie_Inferno', 'Abandoned_Power_Plant', 'Aftermath'],
+    'Erupting_Bun': ['Aurora', '5th_Dimension', 'Blood_Lust', 'Barbie_Inferno', 'Abandoned_Power_Plant', 'Aftermath'],
+    'Evil_Bob': []
 }
 
 # Generation constants
 NUMBER_OF_FRAMES = 120
 FRAME_RATE = 24
 SAVE_THUMBNAIL = True
-GENERATION_COUNT = 3
+GENERATION_COUNT = 1
 
 # Metadata Constants
 METADATA_NAME = 'Your NFT Collection'                           # Name of NFT collection

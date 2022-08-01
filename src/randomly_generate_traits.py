@@ -10,7 +10,7 @@ def generate_traits():
 
     for trait in LAYERS_ORDER:
         trait_path = os.path.join(BUILD_PATH, GIF_DECONSTRUCTED_LAYERS_PATH, trait)
-        trait_selection = select_trait(trait_path)
+        trait_selection = select_trait(trait_path, trait_obj)
         trait_obj.update({trait: os.path.split(trait_selection)[1]})
         trait_paths.append(trait_selection)
 
@@ -24,7 +24,7 @@ def generate_traits():
 
 
 # Returns the full path to a randomly selected trait value option, given the layer path to that trait type 
-def select_trait(trait_path):
+def select_trait(trait_path, trait_obj):
     # Only looking at subdirectories, as they should be parsed PNGs of the GIFs
     trait_options = [ f.path for f in os.scandir(trait_path) if f.is_dir() ]
     rarity_weights = []
@@ -33,7 +33,19 @@ def select_trait(trait_path):
         get_trait_weight(option_arr[len(option_arr)-1], rarity_weights)
   
     random_trait = random.choices(trait_options, weights=rarity_weights)[0]
+    return check_incompatibility(random_trait, trait_path, trait_obj)
+
+
+# Checks if currently selected trait is incompatible with any of the previously selected traits
+def check_incompatibility(random_trait, trait_path, trait_obj):
+    random_trait_value = os.path.split(random_trait)[1]
+    if random_trait_value in INCOMPATIBLE_TRAITS.keys():
+        for value in trait_obj.values():
+            if value in INCOMPATIBLE_TRAITS[random_trait_value]:
+                print('Incompatibility found with traits {} and {}'.format(random_trait_value, value))
+                return select_trait(trait_path, trait_obj)
     return random_trait
+
 
 # Returns list of weighted traits, replacing traits that are missing a weight value with 1
 def get_trait_weight(trait_file, rarity_weights):
