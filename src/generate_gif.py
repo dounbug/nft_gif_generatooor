@@ -4,7 +4,6 @@ from classes.Metadata import Metadata
 from datetime import datetime
 import time
 import json
-import moviepy.editor as mp
 
 # Takes in an ordered list of paths from which to generate the final GIF
 def generate_single_gif(iter, trait_paths):
@@ -22,6 +21,10 @@ def generate_single_gif(iter, trait_paths):
         image_path = os.path.join(SAVE_IMAGE_PATH, str(i)+'.png')
         base.save(image_path, format='PNG')
 
+        # If save thumbnail is on, save the first image now
+        if(i == 0 and SAVE_THUMBNAIL):
+            base.save(os.path.join(SAVE_THUMBNAIL_PATH, str(iter)+'.png'), format='PNG')
+
     save_mov(iter)
 
 
@@ -29,7 +32,7 @@ def generate_single_gif(iter, trait_paths):
 def save_mov(iter):
     gif_path = os.path.join(SAVE_IMAGE_PATH, str(iter)+'.mp4')
 
-    # Change directory to run the generation code, save movie, delete PNGs, & revert directory back 
+    # Change directory to run the generation code, save movie, thumbnail delete PNGs, & revert directory back 
     os.chdir(SAVE_IMAGE_PATH)
     os.system("ffmpeg -framerate {} -i %d.png -c:v libx264 {}.mp4".format(FRAME_RATE, iter))
     os.system(' find . -name "*.png" -type f -delete ')
@@ -42,8 +45,8 @@ def save_mov(iter):
 
 # Generates metadata from defined class & passes JSON object to save function
 def generate_metadata(iter, trait_obj):
-    name = METADATA_NAME+' #'+str(iter)
-    description = METADATA_DESCRIPTION
+    name = METADATA_NAME.join(' #').join(str(iter))
+    desc = METADATA_DESCRIPTION
     edition = str(iter)
     date = time.mktime(datetime.now().timetuple())
     thumbnail = ''
@@ -51,7 +54,7 @@ def generate_metadata(iter, trait_obj):
     for key in trait_obj:
         attributes.append({'trait_type': key, 'trait_value': trait_obj[key]})
 
-    data = Metadata(name,description,edition,date,thumbnail,attributes)
+    data = Metadata(name,desc,edition,date,thumbnail,attributes)
     save_metadata(iter, data)
     
 
