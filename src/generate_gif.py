@@ -34,7 +34,7 @@ def save_mov(iter):
 
     # Change directory to run the generation code, save movie, thumbnail delete PNGs, & revert directory back 
     os.chdir(SAVE_IMAGE_PATH)
-    os.system("ffmpeg -framerate {} -i %d.png -c:v libx264 {}.mp4".format(FRAME_RATE, iter))
+    os.system("ffmpeg -framerate {} -i %d.png -c:v libx264 -pix_fmt yuv420p {}.mp4".format(FRAME_RATE, iter))
     os.system(' find . -name "*.png" -type f -delete ')
     os.chdir(BASE_PATH)
 
