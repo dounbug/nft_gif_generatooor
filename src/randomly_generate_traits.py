@@ -39,6 +39,8 @@ def select_trait(trait_path, trait_obj):
 # Checks if currently selected trait is incompatible with any of the previously selected traits
 def check_incompatibility(random_trait, trait_path, trait_obj):
     random_trait_value = os.path.split(random_trait)[1]
+    if '#' in random_trait_value:
+        random_trait_value = random_trait_value.split('#')[0]
     if random_trait_value in INCOMPATIBLE_TRAITS.keys():
         for value in trait_obj.values():
             if value in INCOMPATIBLE_TRAITS[random_trait_value]:
@@ -50,6 +52,7 @@ def check_incompatibility(random_trait, trait_path, trait_obj):
 # Returns list of weighted traits, replacing traits that are missing a weight value with 1
 def get_trait_weight(trait_file, rarity_weights):
     if ('#' in trait_file):
+        print('# FOUND IN TRAIT FILE ', trait_file)
         trait_weight = int(trait_file.split('#')[1])
     else:
         trait_weight = 1

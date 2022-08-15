@@ -27,7 +27,14 @@ INCOMPATIBLE_TRAITS = {
     # EARS
     'Blue_Flame_Ears': ['Rainbow_Rock_Tee', 'Extraterrestrial', 'Suspicious'],
     # HEAD
+    'Acid_Wash_Head': ['Aftermath', 'Casual_Muck', 'Handmade_Bomber', 'OctoTutu', 'Purple_Fire_Coat'],
+    'Ash_Cloud': ['Aftermath', 'Casual_Muck', 'Handmade_Bomber', 'OctoTutu', 'Purple_Fire_Coat'],
+    'Atomic_Alien': ['Aftermath', 'Casual_Muck', 'Handmade_Bomber', 'OctoTutu', 'Purple_Fire_Coat'],
+    'Bleeding_Chrome_Head': ['Aftermath', 'Casual_Muck', 'Handmade_Bomber', 'OctoTutu', 'Purple_Fire_Coat'],
+    'Bleeding_Gold_Head': ['Aftermath', 'Casual_Muck', 'Handmade_Bomber', 'OctoTutu', 'Purple_Fire_Coat'],
+    'Bleeding_Metal_Head': ['Aftermath', 'Casual_Muck', 'Handmade_Bomber', 'OctoTutu', 'Purple_Fire_Coat'],
     'Extraterrestrial': ['Aftermath', 'Casual_Muck', 'Handmade_Bomber', 'OctoTutu', 'Purple_Fire_Coat'],
+
     # HAIR
     'Amoeba_Hair': ['Aurora', '5th_Dimension', 'Blood_Lust', 'Barbie_Inferno', 'Abandoned_Power_Plant', 'Aftermath'],
     'Atomic_Hair': ['Aurora', '5th_Dimension', 'Blood_Lust', 'Barbie_Inferno', 'Abandoned_Power_Plant', 'Aftermath'],
@@ -35,7 +42,10 @@ INCOMPATIBLE_TRAITS = {
     'Dead_Foliage': ['Aurora', '5th_Dimension', 'Blood_Lust', 'Barbie_Inferno', 'Abandoned_Power_Plant', 'Aftermath'],
     'Electric_Wig': ['Aurora', '5th_Dimension', 'Blood_Lust', 'Barbie_Inferno', 'Abandoned_Power_Plant', 'Aftermath'],
     'Erupting_Bun': ['Aurora', '5th_Dimension', 'Blood_Lust', 'Barbie_Inferno', 'Abandoned_Power_Plant', 'Aftermath'],
-    'Evil_Bob': []
+    'Evil_Bob': [],
+
+    #ACCESSORIES
+    # 'Calcium_Chain': ['Bored_AF', 'Burst_Vessels_Eyes', 'Bursting_Eye', 'Snake_Eyes', 'Suspicious', 'Void_Eyes']
 }
 
 # Generation constants
